@@ -1,6 +1,7 @@
 // #1 Import the Post model created with mongoose
 const Post = require('./models/post');
 const Organization = require('./models/organization');
+const Family = require('./models/family');
 
 // #2 Create resolver functions to handle GraphQL queries
 /**
@@ -10,8 +11,10 @@ const Organization = require('./models/organization');
 const resolvers = {
   Query: {
     // Query which returns posts list
-    posts: () => Post.find({}),
+    families: () => Family.find({}),
     organizations: () => Organization.find({}),
+    posts: () => Post.find({}),
+
   },
 
 /**
@@ -20,12 +23,21 @@ const resolvers = {
  * The mutation resolvers must return the created object.
  */
   Mutation: {
-    addPost: (parent, post) => {
-      // Create a new post
-      const newPost = new Post({ title: post.title, content: post.content });
-      // Save new post and return it
-      return newPost.save();
+    addFamily: (parent, family) => {
+      const newFamily = new Family({
+        FamilyName: family.FamilyName,
+        Address: family.Address,
+        Address2: family.Address2,
+        City: family.City,
+        State: family.State,
+        Zip: family.Zip,
+        Status: family.Status,
+        EnteredBy: family.EnteredBy,
+        DateEntered: family.DateEntered
+      });
+      return newFamily.save();
     },
+    
     addOrganization: (parent, organization) => {
       const newOrganization = new Organization({
         Name: organization.Name,
@@ -50,7 +62,14 @@ const resolvers = {
         ParentID: organization.ParentID
       });
       return newOrganization.save();
-    }
+    },
+    addPost: (parent, post) => {
+      // Create a new post
+      const newPost = new Post({ title: post.title, content: post.content });
+      // Save new post and return it
+      return newPost.save();
+    },
+
   }
 };
 

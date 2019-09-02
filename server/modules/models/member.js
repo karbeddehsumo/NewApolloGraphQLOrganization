@@ -8,9 +8,9 @@ const memberSchema = new Schema({
   MiddleName: String,
   LastName: String,
   Suffix: String,
-  DOB: String,
+  DOB: Date,
   Gender: String,
-  MembershipDate: String,
+  MembershipDate: Date,
   Title: String,
   ContactTypeID: String,
   PhoneNumber: String,
@@ -19,7 +19,7 @@ const memberSchema = new Schema({
   PictureID: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 
 });
 

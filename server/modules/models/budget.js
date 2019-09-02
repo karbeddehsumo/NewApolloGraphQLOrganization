@@ -10,7 +10,7 @@ const budgetSchema = new Schema({
   Comment: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('budget', budgetSchema);

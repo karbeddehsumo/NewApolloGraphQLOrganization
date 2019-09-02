@@ -5,13 +5,13 @@ const announcementSchema = new Schema({
   OrganizationID: String,
   CommitteeID: String,
   Title: String,
-  BeginDate: String,
-  EndDate: String,
+  BeginDate: Date,
+  EndDate: Date,
   Message: String,
   DocumentID: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('announcement', announcementSchema);

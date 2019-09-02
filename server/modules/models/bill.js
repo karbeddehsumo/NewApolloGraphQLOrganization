@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const billSchema = new Schema({
-  OrganizationID: SComment: String,
+  OrganizationID: String,
   PayeeID: String,
   PayeeName: String,
   AccountNumber: String,
   TotalAmount: String,
   AmountDue: String,
-  DateDue: String,
+  DateDue: Date,
   Comment: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('bill', billSchema);

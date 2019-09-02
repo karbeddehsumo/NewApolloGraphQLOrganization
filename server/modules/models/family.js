@@ -10,7 +10,7 @@ const familySchema = new Schema({
   Zip: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: Date
+  DateEntered: String
 
 });
 

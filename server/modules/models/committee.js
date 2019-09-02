@@ -29,7 +29,7 @@ const committeeSchema = new Schema({
   DisplayBanner: String,
   Vision: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 
 });
 

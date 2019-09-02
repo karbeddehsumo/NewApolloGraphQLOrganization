@@ -6,12 +6,12 @@ const bankBalanceSchema = new Schema({
   BankAccountID: String,
   LastIncomeID: String,
   LastExpenseID: String,
-  BeginDate: String,
-  EndDate: String,
-  BeginBalance: String,
-  RevenueAmount: String,
-  ExpenseAmount: String,
-  EndingBalance: String
+  BeginDate: Date,
+  EndDate: Date,
+  BeginBalance: Double,
+  RevenueAmount: Double,
+  ExpenseAmount: Double,
+  EndingBalance: Double
 });
 
 module.exports = mongoose.model('bankBalance',bankBalanceSchema);

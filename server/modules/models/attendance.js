@@ -7,7 +7,7 @@ const attendanceSchema = new Schema({
   RollCall: String,
   CalendarID: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('attendance', attendanceSchema);
