@@ -252,6 +252,7 @@ const typeDefs = gql`
   #4 Define the query type that must respond to 'posts' query
 #--------------------------------------------------------------------------------------------
   type Query {
+    actionItems: [ActionItem],
     announcements: [Announcement],
     articles: [Article],
     attendances: [Attendance],
@@ -281,7 +282,7 @@ const typeDefs = gql`
             ChildItemID: String!,
           ):ActionItem,
 
-          addAccouncement(
+          addAnnouncement(
             OrganizationID: String!,
             CommitteeID: String!,
             Title: String!,

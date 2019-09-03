@@ -9,7 +9,7 @@ const bankAccountSchema = new Schema({
   ControlName: String,
   Status: String,
   IsBudgeted: String,
-  EnteredBy: Status,
+  EnteredBy: String,
   DateEntered: Date
 });
 
