@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const attendanceSchema = new Schema({
-  OrganizationID: String,
+  MeetingID: String,
   MemberID: String,
   RollCall: String,
-  CalendarID: String,
   EnteredBy: String,
   DateEntered: Date
 });

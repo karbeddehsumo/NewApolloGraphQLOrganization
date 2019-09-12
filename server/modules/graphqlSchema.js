@@ -8,49 +8,48 @@ const typeDefs = gql`
 
   type ActionItem {
       _id: ID,
-      OrganizationID: String,
-      ParentType: String,
-      ParentItemID: String,
-      ChildItemID: String,
+      Task: Task,
+      Description: String,
+      AssignedTo: String,
+      StartDate: String,
+      EndDate: String,
+      Comment: [String]
+    },
+
+    type Address {
+      _id: ID,
+      Address1: String,
+      Address2: String,
+      City: String,
+      State: String,
+      Zip: String
     },
 
     type Announcement {
         _id: ID,
-        OrganizationID: String,
-        CommitteeID: String,
+        Committee: Committee,
         Title: String,
         BeginDate: String,
         EndDate: String,
         Message: String,
-        DocumentID: String,
+        Document: Document,
         Status: String,
         EnteredBy: String,
         DateEntered: String
       },
 
-
-      type Article {
-        _id: ID,
-        Title: String,
-        URL: String,
-        ArticleText: String,
-        CreateDate: String,
-        UpdateDate: String
-      },
-
   type Attendance {
     _id: ID,
-    OrganizationID: String,
-    MemberID: String,
+    Meeting: Meeting,
+    Member: Member,
     RollCall: String,
-    CalendarID: String,
     EnteredBy: String,
     DateEntered: String
   },
 
   type BankAccount {
       _id: ID,
-      OrganizationID: String,
+      Committee: Committee,
       BankName: String,
       AccountNumber: String,
       Description: String,
@@ -63,10 +62,10 @@ const typeDefs = gql`
 
     type BankBalance {
         _id: ID,
-        OrganizationID: String,
-        BankAccountID: String,
-        LastIncomeID: String,
-        LastExpenseID: String,
+        Committee: Committee,
+        BankAccount: BankAccount,
+        LastIncome: Income,
+        LastExpense: Expense,
         BeginDate: String,
         EndDate: String,
         BeginBalance: String,
@@ -77,8 +76,8 @@ const typeDefs = gql`
 
       type Bill {
         _id: ID,
-        OrganizationID: String,
-        PayeeID: String,
+        Committee: Committee,
+        Payee: Payee,
         PayeeName: String,
         AccountNumber: String,
         TotalAmount: String,
@@ -92,10 +91,10 @@ const typeDefs = gql`
 
       type Budget {
         _id: ID,
-        OrganizationID: String,
+        Committee: Committee,
         BudgetYear: String,
         Type: String,
-        SubCategoryID: String,
+        SubCategory: SubCategory,
         Amount: String,
         Comment: String,
         Status: String,
@@ -103,16 +102,35 @@ const typeDefs = gql`
         DateEntered: String
       },
 
+      type Calendar {
+        id: ID,
+        Committee: Committee,
+        Title: String,
+        EventType: String,
+        StartDate: String,
+        EndDate: String,
+        Location: String,
+        Description: String,
+        Host: String,
+        PublicAccess: String,
+        Document: Document,
+        Picture: Picture,
+        DisplayBanner: String,
+        Status: String,
+        EnteredBy: String,
+        DateEntered: String
+      },
+
       type Committee {
         _id: ID,
-        OrganizationID: String,
+        Organization: Organization,
         CommitteeName: String,
         Description: String,
         Contact: String,
         ContactEmail: String,
         PhoneNumber: String,
         BriefDescription: String,
-        PageStyleID: String,
+        PageStyle: PageStyle,
         Status: String,
         CodeDesc: String,
         StoryCreateAccess: String,
@@ -121,7 +139,7 @@ const typeDefs = gql`
         IsPublic: String,
         DefaultMemberType: String,
         IsGroupCommittee: String,
-        PictureID: String,
+        Picture: [Picture],
         MissionStatement: String,
         Title1: String,
         Information1: String,
@@ -135,9 +153,15 @@ const typeDefs = gql`
         DateEntered: String
       },
 
+      type CommitteeMember {
+        id: ID,
+        Committee: Committee,
+        Member: Member
+      },
+
       type Constant {
         _id: ID,
-        OrganizationID: String,
+        Organization: Organization,
         Category: String,
         ConstantName: String,
         Value1: String,
@@ -148,6 +172,45 @@ const typeDefs = gql`
         EnteredBy: String,
         DateEntered: String
       },
+
+      type Contact {
+        id: ID,
+        Cell: String,
+        Email: String,
+        BestContact: String
+      },
+
+      type Contribution {
+        id: ID,
+        Committee: Committee,
+        Member: Member,
+        Amount: String,
+        ContributionDate: String,
+        CheckNumber: String,
+        SubCategory: SubCategory,
+        EnteredBy: String,
+        DateEntered: String
+      },
+
+      type Document {
+        id: ID,
+        Committee: Committee,
+        Title: String,
+        DocumentType: DocumentType,
+        ContentType: String,
+        ContentLength: String,
+        SortOrder: String,
+        DateCreated: String,
+        Author: String,
+        Version: String,
+        FileName: String,
+        TempFileName: String,
+        Status: String,
+        EnteredBy: String,
+        DateEntered: String
+      },
+
+
 
   type Family {
       _id: ID,
@@ -165,16 +228,16 @@ const typeDefs = gql`
 
     type Friend {
         _id: ID,
-        OrganizationID: String,
+        Organization: Organization,
         Title: String,
         FirstName: String,
         LastName: String,
         Suffix: String,
-        SubCategoryID: String,
+        SubCategory: SubCategory,
         LastEventAttended: String,
         EventDate: String,
         PhoneNumber: String,
-        PhoneProviderID: String,
+        PhoneProvider: PhoneProvider,
         Email: String,
         BestContact: String,
         Address: String,
@@ -188,10 +251,16 @@ const typeDefs = gql`
         DateEntered: String
       },
 
+      type FriendEventAttencance {
+        id: ID,
+        ProgramEvent: ProgramEvent,
+        Friend: Friend
+      },
+
       type Member {
           _id: ID,
-          FamilyID: String,
-          OrganizationID: String,
+          Family: Family,
+          Organization: Organization,
           FirstName: String,
           MiddleName: String,
           LastName: String,
@@ -200,39 +269,40 @@ const typeDefs = gql`
           Gender: String,
           MembershipDate: String,
           Title: String,
-          ContactTypeID: String,
+          ContactType: ContactType,
           PhoneNumber: String,
-          PhoneProviderID: String,
+          PhoneProvider: PhoneProvider,
           Email: String,
-          PictureID: String,
+          Picture: [Picture],
           Status: String,
           EnteredBy: String,
           DateEntered: String
         },
 
-  type Organization {
-    _id: ID,
-    Name: String,
-    Address: String,
-    Address2: String,
-    City: String,
-    State: String,
-    Zip: String,
-    Country: String,
-    PhoneNumber: String,
-    Email: String,
-    YearFounded: String,
-    StoryID: String,
-    PictureID: String,
-    VideoID: String,
-    Description: String,
-    Vision: String,
-    Mission: String,
-    Status: String!,
-    EnteredBy: String!,
-    DateEntered: String!,
-    ParentID: String
-  },
+      type Organization {
+        _id: ID,
+        Name: String,
+        Address: String,
+        Address2: String,
+        City: String,
+        State: String,
+        Zip: String,
+        Country: String,
+        PhoneNumber: String,
+        Email: String,
+        YearFounded: String,
+        Story: [Story],
+        Picture: [Picture],
+        Video: [Video],
+        Description: String,
+        Vision: String,
+        Mission: String,
+        Status: String!,
+        EnteredBy: String!,
+        DateEntered: String!,
+        Parent: Organization
+        Children: [Organization]
+      },
 
   type Post {
     _id: ID,
@@ -240,10 +310,15 @@ const typeDefs = gql`
     content: String
   },
 
+  type Role {
+    role: String
+  }
+
   type User {
     _id: ID,
     email: String,
     password: String
+    roles: [role]
   },
 
 

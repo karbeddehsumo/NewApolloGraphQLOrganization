@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bankBalanceSchema = new Schema({
-  OrganizationID: String,
+  CommitteeID: String,
   BankAccountID: String,
   LastIncomeID: String,
   LastExpenseID: String,

@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const announcementSchema = new Schema({
-  OrganizationID: String,
   CommitteeID: String,
   Title: String,
   BeginDate: Date,

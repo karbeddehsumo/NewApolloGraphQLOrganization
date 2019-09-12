@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const budgetSchema = new Schema({
-  OrganizationID: String,
+  CommitteeID: String,
   BudgetYear: String,
   Type: String,
   SubCategoryID: String,
