@@ -8,7 +8,7 @@ const friendSchema = new Schema({
   LastName: String,
   Suffix: String,
   SubCategoryID: String,
-  EventAttendanceID: [String],
+  ProgramAttendance: [String],
   EventDate: Date,
   ContactID: String,
   AddressID: String

@@ -16,6 +16,7 @@ const programEventSchema = new Schema({
   CalendarID: String,
   DocumentID: String,
   EventEndDate: String,
+  ProgramAttendance: [String],
   EnteredBy: String,
   DateEntered: Strng
 });

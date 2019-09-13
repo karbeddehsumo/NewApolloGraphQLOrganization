@@ -210,16 +210,24 @@ const typeDefs = gql`
         DateEntered: String
       },
 
-
+      type Expense {
+        Committee: Committee,
+        SubCategory: SubCategory,
+        Payee: String,
+        ExpenseDate: String,
+        Amount: String,
+        CheckNumber: String,
+        Reconcile: Date,
+        Comment: String,
+        Status: String,
+        EnteredBy: String,
+        DateEntered: String
+      },
 
   type Family {
       _id: ID,
       FamilyName: String,
-      Address: String,
-      Address2: String,
-      City: String,
-      State: String,
-      Zip: String,
+      Address: Address,
       Status: String!,
       EnteredBy: String!,
       DateEntered: String!
@@ -234,7 +242,7 @@ const typeDefs = gql`
         LastName: String,
         Suffix: String,
         SubCategory: SubCategory,
-        LastEventAttended: String,
+        FriendEventAttencance: FriendEventAttencance,
         EventDate: String,
         PhoneNumber: String,
         PhoneProvider: PhoneProvider,

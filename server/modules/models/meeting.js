@@ -13,6 +13,7 @@ const meetingSchema = new Schema({
   CalendarID: String,
   DocumentID: String,
   Host: String,
+  MeetingAttendance: [string],
   EnteredBy: String,
   DateEntered: String
 });

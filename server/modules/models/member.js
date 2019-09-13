@@ -17,6 +17,8 @@ const memberSchema = new Schema({
   PhoneProviderID: String,
   Email: String,
   PictureID: String,
+  MeetingAttendanceID: [String],
+  ProgramAttendanceID: [String],
   Status: String,
   EnteredBy: String,
   DateEntered: Date
