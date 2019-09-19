@@ -17,7 +17,7 @@ const propertySchema = new Schema({
   DocumentID: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: Strng
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('property', propertySchema);

@@ -10,10 +10,12 @@ const goalSchema = new Schema({
   EndDate: String,
   CompletionRatio: Date,
   SupervisorComment: String,
+  TaskID: [String],
+  DocumentID: [String],
   Status: String,
   Comment: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('goal', goalSchema);

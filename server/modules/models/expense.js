@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const expenseSchema = new Schema({
   committeeID: String,
-  SubCategoryID: String,
+  CategoryID: String,
   BankAccountID: String,
   Payee: String,
   ExpenseDate: String,
@@ -13,7 +13,7 @@ const expenseSchema = new Schema({
   Comment: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('expense', expenseSchema);

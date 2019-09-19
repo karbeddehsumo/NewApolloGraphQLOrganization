@@ -8,7 +8,7 @@ const meetingNoteSchema = new Schema({
   NoteDate: String,
   Status: String,
   EnteredBy: Integer,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('meetingNote', meetingNoteSchema);

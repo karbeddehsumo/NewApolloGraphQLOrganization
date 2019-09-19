@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-  FamilyID: String,
   OrganizationID: String,
   FirstName: String,
   MiddleName: String,
@@ -12,13 +11,15 @@ const memberSchema = new Schema({
   Gender: String,
   MembershipDate: Date,
   Title: String,
-  ContactTypeID: String,
+  ContactID: String,
+  AddressID: String,
   PhoneNumber: String,
   PhoneProviderID: String,
   Email: String,
-  PictureID: String,
-  MeetingAttendanceID: [String],
-  ProgramAttendanceID: [String],
+  PictureID: [String],
+  AnnouncementID: String,
+  MiscQuestionID: [String],
+  StoryID: [String],
   Status: String,
   EnteredBy: String,
   DateEntered: Date

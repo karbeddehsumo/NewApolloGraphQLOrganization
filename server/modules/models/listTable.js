@@ -15,7 +15,7 @@ const listTableSchema = new Schema({
   Value9: String,
   Value10: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('listTable', listTableSchema);

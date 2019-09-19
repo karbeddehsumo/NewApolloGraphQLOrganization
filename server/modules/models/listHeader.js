@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const listHeaderSchema = new Schema({
-  OrganizationID: String,
+  CommitteeID: String,
   ListTableID: String,
   Type1: String,
   Type2: String,
@@ -21,7 +21,7 @@ const listHeaderSchema = new Schema({
   FileName5: String,
   FileName6: String,
   FileName7: Date,
-FileName8: String,
+  FileName8: String,
   FileName9: String,
   FileName10: String,
   EnteredBy: String,

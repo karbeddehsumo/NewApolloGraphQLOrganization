@@ -11,7 +11,8 @@ const friendSchema = new Schema({
   ProgramAttendance: [String],
   EventDate: Date,
   ContactID: String,
-  AddressID: String
+  AddressID: String,
+  StoryID: String,
   Comment: String,
   Status: String,
   EnteredBy: String,

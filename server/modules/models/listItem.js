@@ -15,7 +15,7 @@ const listItemSchema = new Schema({
   Value9: String,
   Value10: String,
   EneredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('listItem', listItemSchema);

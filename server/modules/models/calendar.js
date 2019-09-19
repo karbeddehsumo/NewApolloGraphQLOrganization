@@ -13,12 +13,13 @@ const calendarSchema = new Schema({
   Description: String,
   Host: String,
   PublicAccess: String,
-  DocumentID: String,
-  PictureID: String,
+  DocumentID: [String],
+  PictureID: [String],
+  StoryID: [String],
   DisplayBanner: String,
   Status: Strng,
   EnteredBy: String,
-  DateEntered: String,
+  DateEntered: Date,
 });
 
 module.exports = mongoose.model('calendar', calendarSchema);

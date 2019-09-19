@@ -15,7 +15,7 @@ const payee = new Schema({
   Email: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('payeee', payeeSchema);

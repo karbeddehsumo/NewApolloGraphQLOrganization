@@ -15,7 +15,7 @@ const documentSchema = new Schema({
   TempFileName: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('document', documentSchema);

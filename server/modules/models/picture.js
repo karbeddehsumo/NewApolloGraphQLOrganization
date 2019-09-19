@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const picture = new Schema({
   CommitteeID: String,
-  CommitteeID: String,
   PictureDate: String,
   Description: String,
   ImageData: String,
@@ -13,7 +12,7 @@ const picture = new Schema({
   IsPublic: String,
   Status: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('picture', pictureSchema);

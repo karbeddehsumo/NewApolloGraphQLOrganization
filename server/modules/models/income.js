@@ -3,16 +3,15 @@ const Schema = mongoose.Schema;
 
 const incomeSchema = new Schema({
   CommitteeID: String,
-  Title: String,
   BankAccountID: String,
   IncomeDate: String,
   CashAmount: String,
-  SubCategoryID: Integer,
+  CategoryID: Integer,
   CheckAmount: String,
   CoinAmount: Date,
   Comment: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('income', incomeSchema);

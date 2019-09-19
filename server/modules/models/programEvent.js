@@ -15,10 +15,13 @@ const programEventSchema = new Schema({
   Status: String,
   CalendarID: String,
   DocumentID: String,
+  PictureID: [String],
+  AnnouncementID: String,
+  StoryID: String,
   EventEndDate: String,
   ProgramAttendance: [String],
   EnteredBy: String,
-  DateEntered: Strng
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('programEvent', programEventSchema);

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const meetingAttendanceSchema = new Schema({
+  CommitteeID: String,
   MeetingID: String,
   AttendanceID: String,
 });

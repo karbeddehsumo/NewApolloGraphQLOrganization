@@ -8,9 +8,10 @@ const officer = new Schema({
   DateCreated: String,
   Description: String,
   Term: Integer,
+  MiscQuestionID: [String],
   Status: String,
-  EnteredBy: Date,
-  DateEntered: String
+  EnteredBy: String,
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('officer', officerSchema);

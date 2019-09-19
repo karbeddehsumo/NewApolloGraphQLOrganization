@@ -13,9 +13,11 @@ const meetingSchema = new Schema({
   CalendarID: String,
   DocumentID: String,
   Host: String,
-  MeetingAttendance: [string],
+  AttendanceID: [String],
+  MeetingNoteID: [String],
+  AnnouncementID: String,
   EnteredBy: String,
-  DateEntered: String
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('meeting', meetingSchema);
