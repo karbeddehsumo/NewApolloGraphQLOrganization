@@ -7,7 +7,7 @@ const payee = new Schema({
   AccountNumber: String,
   PayeeName: String,
   URL: String,
-  SubCategoryID: Integer,
+  CategoryID: String,
   Frequency: String,
   Description: Date,
   PhoneNumber: String,

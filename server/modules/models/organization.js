@@ -26,7 +26,6 @@ const organizationSchema = new Schema({
   EnteredBy: String,
   DateEntered: Date,
   MainCommittee: String,
-  ParentID: String
 
 });
 

@@ -7,7 +7,7 @@ const meetingNoteSchema = new Schema({
   Note: String,
   NoteDate: String,
   Status: String,
-  EnteredBy: Integer,
+  EnteredBy: String,
   DateEntered: Date
 });
 

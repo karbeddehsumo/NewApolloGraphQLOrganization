@@ -8,7 +8,6 @@ const productSchema = new Schema({
   Price: String,
   Quantity: String,
   CategoryID: Integer,
-  CategoryID: String,
   PictureID: [String],
   DocumentID: [String],
   StoryID: [String],

@@ -5,7 +5,7 @@ const budgetSchema = new Schema({
   CommitteeID: String,
   BudgetYear: String,
   Type: String,
-  SubCategoryID: String,
+  CategoryID: String,
   Amount: String,
   Comment: String,
   Status: String,

@@ -10,7 +10,7 @@ const committeeSchema = new Schema({
   PageStyleID: String,
   Status: String,
   IsPublic: String,
-  IsGroupCommittee: String,
+  CommitteeType: String,
   MissionStatementStoryID: String,
   Title1StoryID: String,
   Title2StoryID: String,

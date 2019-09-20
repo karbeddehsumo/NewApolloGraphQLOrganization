@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const contributionSchema = new Schema({
   CommitteeID: String,
-  ContributionTypeID: String,
+  CategoryID: String,
   PayeeID: String,
   Amount: String,
   ContributionDate: String,

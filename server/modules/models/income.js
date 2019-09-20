@@ -8,7 +8,7 @@ const incomeSchema = new Schema({
   CashAmount: String,
   CategoryID: Integer,
   CheckAmount: String,
-  CoinAmount: Date,
+  CoinAmount: Integer,
   Comment: String,
   EnteredBy: String,
   DateEntered: Date

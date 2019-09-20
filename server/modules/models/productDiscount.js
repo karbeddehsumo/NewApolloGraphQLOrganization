@@ -7,7 +7,7 @@ const productDiscountSchema = new Schema({
   Discount: String,
   StartDate: String,
   EndDate: String,
-  EnteredBy: Integer,
+  EnteredBy: String,
   DateEntered: Date
 });
 
