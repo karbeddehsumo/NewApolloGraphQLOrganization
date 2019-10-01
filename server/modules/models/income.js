@@ -6,9 +6,9 @@ const incomeSchema = new Schema({
   BankAccountID: String,
   IncomeDate: String,
   CashAmount: String,
-  CategoryID: Integer,
+  CategoryID: String,
   CheckAmount: String,
-  CoinAmount: Integer,
+  CoinAmount: String,
   Comment: String,
   EnteredBy: String,
   DateEntered: Date

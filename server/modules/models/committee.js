@@ -30,7 +30,7 @@ const committeeSchema = new Schema({
   PictureID: [String],
   AnnouncementID: [String],
   DocumentID: [String],
-  MiscQuestionID: [String],
+  QuestionID: [String],
   ListTableID: [String],
   StoryID: [String],
   ProductID: [String],

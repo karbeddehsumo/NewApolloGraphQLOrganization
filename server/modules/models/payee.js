@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const payee = new Schema({
+const payeeSchema = new Schema({
   CommitteeID: String,
   BankAccountID: String,
   AccountNumber: String,

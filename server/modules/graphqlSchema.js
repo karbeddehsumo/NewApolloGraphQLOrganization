@@ -22,9 +22,11 @@ const typeDefs = gql`
       OrganizationID: Organization,
       Address1: String,
       Address2: String,
+      Address3: String,
       City: String,
       State: String,
-      Zip: String
+      Zip: String,
+      Country: String
     },
 
     type Announcement {
@@ -34,12 +36,20 @@ const typeDefs = gql`
         BeginDate: String,
         EndDate: String,
         Message: String,
-        IsPublic: Bool,
+        IsPublic: String,
         DocumentID: [Document],
         PictureID: [Picture],
         Status: String,
         EnteredBy: String,
         DateEntered: String
+      },
+
+      type Answer {
+        _id: ID,
+        OrganizationID: String,
+        MemberID: String,
+        QuestionID: String,
+        Value: String,
       },
 
   type Attendance {
@@ -98,7 +108,7 @@ const typeDefs = gql`
         CommitteeID: Committee,
         BudgetYear: String,
         Type: String,
-        SubCategoryID: SubCategory,
+        CategoryID: Category,
         Amount: String,
         Comment: String,
         Status: String,
@@ -127,6 +137,13 @@ const typeDefs = gql`
         DateEntered: String
       },
 
+      type Category {
+        _id: ID,
+        OrganizationID: String,
+        CategoryName: String,
+        Status: String
+      },
+
       type Committee {
         _id: ID,
         OrganizationID: Organization,
@@ -134,7 +151,7 @@ const typeDefs = gql`
         Description: String,
         PrimaryContactID: String,
         PrimaryAddressID: String,
-        PageStyleID: PageStyle,
+        PageStyleID: String,
         Status: String,
         IsPublic: String,
         CommitteeType: String,
@@ -157,7 +174,7 @@ const typeDefs = gql`
         PictureID: [String],
         AnnouncementID: [String],
         DocumentID: [String],
-        MiscQuestionID: [String],
+        QuestionID: [Question],
         ListTableID: [String],
         StoryID: [String],
         ProductID: [String],
@@ -169,7 +186,7 @@ const typeDefs = gql`
       type Constant {
         _id: ID,
         OrganizationID: Organization,
-        Category: String,
+        Category: Category,
         ConstantName: String,
         Value1: String,
         Value2: String,
@@ -203,7 +220,7 @@ const typeDefs = gql`
       type Document {
         _id: ID,
         committeeID: Committee,
-        DocumentTypeID: DocumentType,
+        DocumentTypeID: String,
         ContentType: String,
         ContentLength: String,
         SortOrder: String,
@@ -242,9 +259,9 @@ const typeDefs = gql`
         MiddleName: String,
         LastName: String,
         Suffix: String,
-        CategoryID: String,
+        CategoryID: Category,
         ProgramAttendance: [Attendance],
-        EventDate: Date,
+        EventDate: String,
         ContactID: Contact,
         AddressID: Address,
         StoryID: Story,
@@ -260,16 +277,16 @@ const typeDefs = gql`
         Title: String,
         Description: String,
         AssignedTo: String,
-        BeginDate: Integer,
+        BeginDate: String,
         EndDate: String,
-        CompletionRatio: Date,
+        CompletionRatio: String,
         SupervisorComment: String,
         TaskID: [Task],
         DocumentID: [Document],
         Status: String,
         Comment: String,
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type Income {
@@ -292,15 +309,15 @@ const typeDefs = gql`
         Value1: String,
         Value2: String,
         Value3: String,
-        Value4: Integer,
+        Value4: String,
         Value5: String,
-        Value6: Date,
+        Value6: String,
         Value7: String,
         Value8: String,
         Value9: String,
         Value10: String,
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type ListHeader {
@@ -310,20 +327,20 @@ const typeDefs = gql`
         Type1: String,
         Type2: String,
         Type3: String,
-        Type4: Integer,
+        Type4: String,
         Type5: String,
-        Type6: Date,
+        Type6: String,
         Type7: String,
         Type8: String,
         Type9: String,
         Type10: String,
         FileName1: String,
         FileName2: String,
-        FileName3: Strng,
+        FileName3: String,
         FileName4: String,
         FileName5: String,
         FileName6: String,
-        FileName7: Date,
+        FileName7: String,
         FileName8: String,
         FileName9: String,
         FileName10: String,
@@ -338,15 +355,15 @@ const typeDefs = gql`
         Value1: String,
         Value2: String,
         Value3: String,
-        Value4: Integer,
+        Value4: String,
         Value5: String,
-        Value6: Date,
+        Value6: String,
         Value7: String,
         Value8: String,
         Value9: String,
         Value10: String,
         EneredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type Meeting {
@@ -355,18 +372,18 @@ const typeDefs = gql`
         MeetingDate: String,
         Venue: String,
         StartTime: String,
-        EndTime: Integer,
+        EndTime: String,
         Title: String,
-        NextMeetingDate: Date,
+        NextMeetingDate: String,
         Status: String,
         CalendarID: Calendar,
-        DocumentID: Document,
+        DocumentID: [Document],
         Host: String,
         AttendanceID: [Attendance],
         MeetingNoteID: [MeetingNote],
         AnnouncementID: Announcement,
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type MeetingAgenda {
@@ -375,20 +392,20 @@ const typeDefs = gql`
         MeetingID: Meeting,
         Description: String,
         Status: String,
-        TaskID: Task,
+        TaskID: [Task],
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type MeetingNote {
         _id: ID,
         CommitteeID: Committee,
         MeetingAgendaID: MeetingAgenda,
-        Note: Note,
+        Note: String,
         NoteDate: String,
         Status: String,
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type Member {
@@ -398,9 +415,9 @@ const typeDefs = gql`
           MiddleName: String,
           LastName: String,
           Suffix: String,
-          DOB: Date,
+          DOB: String,
           Gender: String,
-          MembershipDate: Date,
+          MembershipDate: String,
           Title: String,
           ContactID: Contact,
           AddressID: Address,
@@ -409,17 +426,17 @@ const typeDefs = gql`
           Email: String,
           PictureID: [Picture],
           AnnouncementID: Announcement,
-          MiscQuestionID: [MiscQuestion],
+          QuestionID: [Question],
           StoryID: [Story],
           Status: String,
           EnteredBy: String,
           DateEntered: String
         },
 
-        type MiscQuestion {
+        type Question {
           _id: ID,
           OrganizationID: Organization,
-          Question: String,
+          Question: Question,
           Category: Category,
           Required: String,
           Sequence: String
@@ -433,10 +450,10 @@ const typeDefs = gql`
           DateCreated: String,
           Description: String,
           Term: String,
-          MiscQuestionID: [MisQuestion],
+          QuestionID: [Question],
           Status: String,
           EnteredBy: String,
-          DateEntered: Date
+          DateEntered: String
         },
 
       type Organization {
@@ -463,8 +480,7 @@ const typeDefs = gql`
         Mission: String,
         Status: String,
         EnteredBy: String,
-        DateEntered: Story,
-        MainCommittee: Committee
+        DateEntered: String
       },
 
       type Payee {
@@ -476,13 +492,13 @@ const typeDefs = gql`
         URL: String,
         CategoryID: Category,
         Frequency: String,
-        Description: Date,
+        Description: String,
         PhoneNumber: String,
         PayeeTypeID: String,
         Email: String,
         Status: String,
         EnteredBy: String,
-        DateEntered: Date
+        DateEntered: String
       },
 
       type Picture {
@@ -491,9 +507,9 @@ const typeDefs = gql`
         PictureDate: Picture,
         Description: String,
         ImageData: String,
-        ImageMimeType: Integer,
+        ImageMimeType: String,
         PictureType: String,
-        GroupID: Date,
+        GroupID: String,
         IsPublic: String,
         Status: String,
         EnteredBy: String,
@@ -540,9 +556,9 @@ const typeDefs = gql`
     Title: String,
     _When: String,
     _Who: String,
-    _Where: Integer,
+    _Where: String,
     _What: String,
-    _How: Date,
+    _How: String,
     BeginTime: String,
     EndTime: String,
     Status: String,
@@ -550,7 +566,7 @@ const typeDefs = gql`
     DocumentID: Document,
     PictureID: [Picture],
     AnnouncementID: Announcement,
-    StoryID: Story,
+    StoryID: [Story],
     EventEndDate: String,
     ProgramAttendance: [Attendance],
     EnteredBy: String,
@@ -566,12 +582,12 @@ const typeDefs = gql`
     Location: String,
     AssignedTo: Member,
     Condition: String,
-    TagNumber: Date,
+    TagNumber: String,
     Title: String,
     Description: String,
     Comment: String,
-    PictureID: Picture,
-    DocumentID: Document,
+    PictureID: [Picture],
+    DocumentID: [Document],
     Status: String,
     EnteredBy: String,
     DateEntered: String
@@ -590,10 +606,11 @@ const typeDefs = gql`
     PrimaryName: String,
     URL: String,
     ArticleText: String,
-    Publish:String,
+    Publish:  String,
     DocumentID: [Document],
     CreateDate: String,
-    UpdateDate: String
+    UpdateDate: String,
+    CreatedBy: String
   },
 
   type Task {
@@ -606,7 +623,6 @@ const typeDefs = gql`
     EndDate: String,
     ActionItemID: [ActionItem],
     Comment: [String]
-
   },
 
   type User {
@@ -617,14 +633,23 @@ const typeDefs = gql`
     role: Role
   },
 
-
+  type Video {
+    _id: ID,
+    CommitteeID: String,
+    Title: String,
+    URL: String,
+    CreateDate: String,
+    CreatedBy: String
+  },
 
 #--------------------------------------------------------------------------------------------
   #4 Define the query type that must respond to 'posts' query
 #--------------------------------------------------------------------------------------------
   type Query {
     actionItems: [ActionItem],
+    addresses: [Address],
     announcements: [Announcement],
+    abswers: [Answer],
     attendances: [Attendance],
     bankAccounts: [BankAccount],
     bankBalances: [BankBalance],
@@ -641,14 +666,13 @@ const typeDefs = gql`
     friends: [Friend],
     goals: [Goal],
     incomes: [Income],
-    listHeaders: [ListHeder],
-    listTable: [ListTable],
+    listHeaders: [ListHeader],
+    listTables: [ListTable],
     listItems: [ListItem],
     meetings: [Meeting],
     meetingAgendas: [MeetingAgenda],
     meetingNotes: [MeetingNote],
     members: [Member],
-    miscQuestions: [MiscQuestion],
     officers: [Officer],
     organizations: [Organization],
     payees: [Payee],
@@ -658,238 +682,269 @@ const typeDefs = gql`
     ProductDiscounts: [ProductDiscount],
     programEvents: [ProgramEvent],
     properties: [Property],
+    questions: [Question],
     roles: [Role],
     stories: [Story],
     tasks: [Task],
     users: [User],
+    videos: [Video]
   },
 
 #---------------------------------------------------------------------------------------------
   #5 Define a mutation to add new posts with two required fields
 #---------------------------------------------------------------------------------------------
   type Mutation {
+    addActionItem(
+          OrganizationID: String!,
+          TaskID: String!,
+          Description: String!,
+          AssignedTo: String!,
+          StartDate: String!,
+          EndDate: String!,
+          Comment: [String]!
+        ):ActionItem,
 
-        addActionItem(
-            OrganizationID: String!,
-            ParentType: String!,
-            ParentItemID: String!,
-            ChildItemID: String!,
-          ):ActionItem,
+        addAddress(
+          OrganizationID: String!,
+          MemberID: String!,
+          Address1: String,
+          Address2: String,
+          Address3: String,
+          City: String,
+          State: String,
+          Zip: String,
+          Country: State!,
+        ):Address,
 
-          addAnnouncement(
-            OrganizationID: String!,
-            CommitteeID: String!,
-            Title: String!,
-            BeginDate: String!,
-            EndDate: String!,
-            Message: String!,
-            DocumentID: String,
-            Status: String!,
-            EnteredBy: String!,
-            DateEntered: String!
-          ):Announcement,
+        addAnnouncement(
+          CommitteeID: String!,
+          Title: String!,
+          BeginDate: String!,
+          EndDate: String!,
+          Message: String!,
+          IsPublic: String,
+          DocumentID: String,
+          PictureID: String,
+          Status: String!,
+          EnteredBy: String!,
+          DateEntered: String!
+        ):Announcement,
 
-        addArticle(
+        addAnswer(
+          OrganizationID: String!,
+          MemberID: String!,
+          QuestionID: String!,
+          Value: String!
+        ):Answer,
+
+        addAttendance(
+          CommitteeID: String!,
+          ProgramTypeID: String!,
+          AttendeeID: String!,
+          EnteredBy: String!,
+          DateEntered: String!
+        ):Attendance,
+
+        addBankAccount(
+          CommitteeID: String!,
+          BankName: String!,
+          AccountNumber: String!,
+          Description: String,
+          ControlName: String,
+          Status: String!,
+          IsBudgeted: String,
+          EnteredBy: String!,
+          DateEntered: String!
+        ):BankAccount,
+
+        addBankBalance(
+                CommitteeID: String!,
+                BankAccountID: String!,
+                LastIncomeID: String!,
+                LastExpenseID: String!,
+                BeginDate: String!,
+                EndDate: String!,
+                BeginBalance: String!,
+                RevenueAmount: String!,
+                ExpenseAmount: String!,
+                EndingBalance: String!
+              ):BankBalance,
+
+              addBill(
+                CommitteeID: String!,
+                PayeeID: String!,
+                PayeeName: String!,
+                AccountNumber: String!,
+                TotalAmount: String!,
+                AmountDue: String!,
+                DateDue: String!,
+                Comment: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Bill,
+
+              addBudget(
+                CommitteeID: String!,
+                BudgetYear: String!,
+                Type: String!,
+                CategoryID: String,
+                Amount: String!,
+                Comment: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Budget,
+
+              addCalendar(
+                CommitteeID: String!,
                 Title: String!,
-                URL: String,
-                ArticleText: String!,
-                CreateDate: String!,
-                UpdateDate: String
-              ):Article,
+                EventType: String!
+                StartDate: String!,
+                EndDate: String!,
+                StartTime: String!,
+                EndTime: String!,
+                Location: String!,
+                Description: String,
+                Host: String,
+                PublicAccess: String,
+                DocumentID: [String],
+                PictureID: [String]!,
+                StoryID: [String]!,
+                DisplayBanner: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Calendar,
 
-          addAttendance(
-            OrganizationID: String!,
-            MemberID: String!,
-            RollCall: String!,
-            CalendarID: String!,
-            EnteredBy: String!,
-            DateEntered: String!
-          ):Attendance,
+              addCommittee(
+                OrganizationID: String!,
+                CommitteeName: String!,
+                Description: String,
+                PrimaryContactID: String,
+                PrimaryAddressID: String!,
+                PageStyleID: String,
+                Status: String!,
+                IsPublic: String,
+                CommitteeType: String!,
+                MissionStatementStoryID: String,
+                Title1StoryID: String,
+                Title2StoryID: String,
+                Title3StoryID: String,
+                DisplayBanner: String,
+                VisionStoryID: String,
+                BankAccountID: [String]!,
+                BillID: [String]!,
+                PictureID: [String]!,
+                AnnouncementID: [String]!,
+                DocumentID: [String]!,
+                QuestionID: [String]!,
+                ListTableID: [String]!,
+                StoryID: [String]!,
+                ProductID: [String]!,
+                VideoID: [String]!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Committee,
 
-          addBankAccount(
-            OrganizationID: String!,
-            BankName: String!,
-            AccountNumber: String!,
-            Description: String,
-            ControlName: String,
-            Status: String!,
-            IsBudgeted: String,
-            EnteredBy: String!,
-            DateEntered: String!
-          ):BankAccount,
+              addCategory(
+                OrganizationID: String!
+                CategoryName: String!,
+                Status: String
+              ):Category,
 
-          addBankBalance(
-                  OrganizationID: String!,
-                  BankAccountID: String!,
-                  LastIncomeID: String!,
-                  LastExpenseID: String!,
-                  BeginDate: String!,
-                  EndDate: String!,
-                  BeginBalance: String!,
-                  RevenueAmount: String!,
-                  ExpenseAmount: String!,
-                  EndingBalance: String!
-                ):BankBalance,
+              addConstant(
+                OrganizationID: String!,
+                Category: String,
+                ConstantName: String!,
+                Value1: String!,
+                Value2: String,
+                Value3: String,
+                SortOrder: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Constant,
 
-                addBill(
-                  OrganizationID: String!,
-                  PayeeID: String!,
-                  PayeeName: String!,
-                  AccountNumber: String!,
-                  TotalAmount: String!,
-                  AmountDue: String!,
-                  DateDue: String!,
-                  Comment: String,
-                  Status: String!,
-                  EnteredBy: String!,
-                  DateEntered: String!
-                ):Bill,
 
-                addBudget(
-                  OrganizationID: String!,
-                  BudgetYear: String!,
-                  Type: String!,
-                  SubCategoryID: String!,
-                  Amount: String!,
-                  Comment: String,
-                  Status: String!,
-                  EnteredBy: String!,
-                  DateEntered: String!
-                ):Budget,
 
-                addCommittee(
-                  OrganizationID: String!,
-                  CommitteeName: String!,
-                  Description: String,
-                  Contact: String!,
-                  ContactEmail: String!,
-                  PhoneNumber: String!,
-                  BriefDescription: String,
-                  PageStyleID: String,
-                  Status: String!,
-                  CodeDesc: String,
-                  StoryCreateAccess: String,
-                  PictureCreateAccess: String,
-                  VideoCreateAccess: String,
-                  IsPublic: String,
-                  DefaultMemberType: String,
-                  IsGroupCommittee: String,
-                  PictureID: String,
-                  MissionStatement: String,
-                  Title1: String,
-                  Information1: String,
-                  Title2: String,
-                  Information2: String,
-                  Title3: String,
-                  Information3: String,
-                  DisplayBanner: String,
-                  Vision: String,
-                  EnteredBy: String!,
-                  DateEntered: String!
-                ):Committee,
+     addFriend(
+      OrganizationID: String!,
+      Title: String,
+      FirstName: String!,
+      LastName: String!,
+      Suffix: String,
+      CategoryID: String,
+      LastEventAttended: String,
+      EventDate: String,
+      PhoneNumber: String,
+      PhoneProviderID: String,
+      Email: String,
+      BestContact: String!,
+      Address: String,
+      Address2: String,
+      City: String,
+      State: String,
+      Zip: String,
+      Comment: String,
+      Status: String!,
+      EnteredBy: String!,
+      DateEntered: String!
+    ):Friend,
 
-                addConstant(
-                  OrganizationID: String!,
-                  Category: String!,
-                  ConstantName: String!,
-                  Value1: String!,
-                  Value2: String,
-                  Value3: String,
-                  SortOrder: String,
-                  Status: String!,
-                  EnteredBy: String!,
-                  DateEntered: String!
-                ):Constant,
+    addMember(
+      FamilyID: String!,
+      OrganizationID: String!,
+      FirstName: String!,
+      MiddleName: String,
+      LastName: String!,
+      Suffix: String,
+      DOB: String,
+      Gender: String!,
+      MembershipDate: String,
+      Title: String,
+      ContactTypeID: String,
+      PhoneNumber: String,
+      PhoneProviderID: String,
+      Email: String,
+      PictureID: String,
+      Status: String!,
+      EnteredBy: String!,
+      DateEntered: String!
+    ):Member,
 
-      addFamily(
-         FamilyName: String!,
-         Address: String,
-         Address2: String,
-         City: String,
-         State: String,
-         Zip: String,
-         Status: String!,
-         EnteredBy: String!,
-         DateEntered: String!
-       ): Family,
+    addOrganization(
+      Name: String!,
+      Address: String,
+      Address2: String,
+      City: String!,
+      State: String,
+      Zip: String,
+      Country: String!,
+      PhoneNumber: String!,
+      Email: String!,
+      YearFounded: String!,
+      StoryID: String,
+      PictureID: String,
+      VideoID: String,
+      Description: String!,
+      Vision: String,
+      Mission: String,
+      Status: String!,
+      EnteredBy: String!,
+      DateEntered: String!,
+      ParentID: String
+    ): Organization,
 
-       addFriend(
-        OrganizationID: String!,
-        Title: String,
-        FirstName: String!,
-        LastName: String!,
-        Suffix: String,
-        SubCategoryID: String!,
-        LastEventAttended: String,
-        EventDate: String,
-        PhoneNumber: String,
-        PhoneProviderID: String,
-        Email: String,
-        BestContact: String!,
-        Address: String,
-        Address2: String,
-        City: String,
-        State: String,
-        Zip: String,
-        Comment: String,
-        Status: String!,
-        EnteredBy: String!,
-        DateEntered: String!
-      ):Friend,
+    addPost(
+      title: String!,
+      content: String!
+    ): Post,
 
-      addMember(
-        FamilyID: String!,
-        OrganizationID: String!,
-        FirstName: String!,
-        MiddleName: String,
-        LastName: String!,
-        Suffix: String,
-        DOB: String,
-        Gender: String!,
-        MembershipDate: String,
-        Title: String,
-        ContactTypeID: String,
-        PhoneNumber: String,
-        PhoneProviderID: String,
-        Email: String,
-        PictureID: String,
-        Status: String!,
-        EnteredBy: String!,
-        DateEntered: String!
-      ):Member,
-
-      addOrganization(
-        Name: String!,
-        Address: String,
-        Address2: String,
-        City: String!,
-        State: String,
-        Zip: String,
-        Country: String!,
-        PhoneNumber: String!,
-        Email: String!,
-        YearFounded: String!,
-        StoryID: String,
-        PictureID: String,
-        VideoID: String,
-        Description: String!,
-        Vision: String,
-        Mission: String,
-        Status: String!,
-        EnteredBy: String!,
-        DateEntered: String!,
-        ParentID: String
-      ): Organization,
-
-      addPost(
-        title: String!,
-        content: String!
-      ): Post,
-
-      addUser(
-        email: String!,
-        password: String!
-      ):User,
+    addUser(
+      email: String!,
+      password: String!
+    ):User,
   },
 
 `;

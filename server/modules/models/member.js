@@ -18,7 +18,7 @@ const memberSchema = new Schema({
   Email: String,
   PictureID: [String],
   AnnouncementID: String,
-  MiscQuestionID: [String],
+  QuestionID: [String],
   StoryID: [String],
   Status: String,
   EnteredBy: String,

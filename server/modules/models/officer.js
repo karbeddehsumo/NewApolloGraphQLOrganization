@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const officer = new Schema({
+const officerSchema = new Schema({
   CommitteeID: String,
   Title: String,
   MemberID: String,
   DateCreated: String,
   Description: String,
-  Term: Integer,
-  MiscQuestionID: [String],
+  Term: String,
+  QuestionID: [String],
   Status: String,
   EnteredBy: String,
   DateEntered: Date

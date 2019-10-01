@@ -7,7 +7,7 @@ const expenseSchema = new Schema({
   BankAccountID: String,
   Payee: String,
   ExpenseDate: String,
-  Amount: Integer,
+  Amount: String,
   CheckNumber: String,
   Reconcile: Date,
   Comment: String,

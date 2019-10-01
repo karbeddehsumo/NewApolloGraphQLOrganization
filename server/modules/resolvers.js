@@ -1,22 +1,46 @@
 // #1 Import the Post model created with mongoose
+
 const ActionItem = require('./models/actionItem');
+const Address = require('./models/address');
 const Announcement = require('./models/announcement');
-const Article = require('./models/article');
 const Attendance = require('./models/attendance');
 const BankAccount = require('./models/bankAccount');
 const BankBalance = require('./models/bankBalance');
 const Bill = require('./models/bill');
 const Budget = require('./models/budget');
+const Calendar = require('./models/calendar');
+const Category = require('./models/category');
 const Committee = require('./models/committee');
 const Constant = require('./models/constant');
-const Family = require('./models/family');
-
+const Contact = require('./models/contact');
+const Contribution = require('./models/contribution');
+const Document = require('./models/document');
+const Expense = require('./models/expense');
 const Friend = require('./models/friend');
+const Goal = require('./models/goal');
+const Income = require('./models/income');
+const ListHeader = require('./models/listHeader');
+const ListItem = require('./models/listItem');
+const ListTable = require('./models/listTable');
+const MeetingAgenda = require('./models/meetingAgenda');
+const MeetingNote = require('./models/meetingNote');
+const Meeting = require('./models/meeting');
 const Member = require('./models/member');
+const Question = require('./models/question');
+const Officer = require('./models/officer');
 const Organization = require('./models/organization');
+const Payee = require('./models/payee');
+const Picture = require('./models/picture');
 const Post = require('./models/post');
-
+const Product = require('./models/product');
+const ProductDiscount = require('./models/productDiscount');
+const ProgramEvent = require('./models/programEvent');
+const Property = require('./models/property');
+const Role = require('./models/role');
+const Story = require('./models/story');
+const Task = require('./models/task');
 const User = require('./models/user');
+const Video = require('./models/video');
 
 
 
@@ -30,7 +54,6 @@ const resolvers = {
     // Query which returns posts list
     actionItems: () => ActionItem.find({}),
     announcements: () => Announcement.find({}),
-    articles: () => Article.find({}),
     attendances: () => Attendance.find({}),
     bankAccounts: () => BankAccount.find({}),
     bankBalances: () => BankBalance.find({}),
@@ -38,9 +61,9 @@ const resolvers = {
     budgets: () => Budget.find({}),
     committees: () => Committee.find({}),
     constants: () => Constant.find({}),
-    families: () => Family.find({}),
     friends: () => Friend.find({}),
     members: () => Member.find({}),
+    questions: () => Question.find({}),
     organizations: () => Organization.find({}),
     posts: () => Post.find({}),
     users: () => User.find({}),
@@ -77,15 +100,7 @@ const resolvers = {
       });
       return newAnnouncement.save();
     },
-    addArticle: (parent, article) => {
-      const newArticle = new Article({
-        Title: article.Title,
-        URL: article.URL,
-        ArticleText: article.ArticleText,
-        CreateDate: article.CreateDate,
-        UpdateDate: article.UpdateDate
-      });
-    },
+
     addAttendance: (parent, attendance) => {
       const newAttendance = new Attendance({
         OrganizationID: attendance.OrganizationID,
@@ -125,20 +140,7 @@ const resolvers = {
       });
       return newBankBalance.save();
     },
-    addFamily: (parent, family) => {
-      const newFamily = new Family({
-        FamilyName: family.FamilyName,
-        Address: family.Address,
-        Address2: family.Address2,
-        City: family.City,
-        State: family.State,
-        Zip: family.Zip,
-        Status: family.Status,
-        EnteredBy: family.EnteredBy,
-        DateEntered: family.DateEntered
-      });
-      return newFamily.save();
-    },
+
     addOrganization: (parent, organization) => {
       const newOrganization = new Organization({
         Name: organization.Name,

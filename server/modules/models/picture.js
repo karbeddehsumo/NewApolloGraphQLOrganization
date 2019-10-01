@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const picture = new Schema({
+const pictureSchema = new Schema({
   CommitteeID: String,
   PictureDate: String,
   Description: String,
   ImageData: String,
-  ImageMimeType: Integer,
+  ImageMimeType: String,
   PictureType: String,
-  GroupID: Date,
+  GroupID: String,
   IsPublic: String,
   Status: String,
   EnteredBy: String,

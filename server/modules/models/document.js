@@ -6,7 +6,7 @@ const documentSchema = new Schema({
   Title: String,
   DocumentTypeID: String,
   ContentType: String,
-  ContentLength: Integer,
+  ContentLength: String,
   SortOrder: String,
   DateCreated: Date,
   Author: String,

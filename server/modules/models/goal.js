@@ -6,7 +6,7 @@ const goalSchema = new Schema({
   Title: String,
   Description: String,
   AssignedTo: String,
-  BeginDate: Integer,
+  BeginDate: String,
   EndDate: String,
   CompletionRatio: Date,
   SupervisorComment: String,

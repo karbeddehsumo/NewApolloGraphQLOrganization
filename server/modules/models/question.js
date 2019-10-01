@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const miscQuestion = new Schema({
+const questionSchema = new Schema({
   OrganizationID: String,
   Question: String,
   Category: String,
@@ -9,4 +9,4 @@ const miscQuestion = new Schema({
   Sequence: String
 });
 
-module.exports = mongoose.model('miscQuestion', miscQuestionSchema);
+module.exports = mongoose.model('question', questionSchema);

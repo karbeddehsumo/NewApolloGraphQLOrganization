@@ -5,10 +5,10 @@ const calendarSchema = new Schema({
   CommitteeID: String,
   Title: String,
   EventType: String,
-  StartDate: String,
-  EndDate: Integer,
+  StartDate: Date,
+  EndDate: Date,
   StartTime: String,
-  EndTime: Date,
+  EndTime: String,
   Location: String,
   Description: String,
   Host: String,
@@ -17,9 +17,9 @@ const calendarSchema = new Schema({
   PictureID: [String],
   StoryID: [String],
   DisplayBanner: String,
-  Status: Strng,
+  Status: String,
   EnteredBy: String,
-  DateEntered: Date,
+  DateEntered: Date
 });
 
 module.exports = mongoose.model('calendar', calendarSchema);

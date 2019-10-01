@@ -7,7 +7,7 @@ const announcementSchema = new Schema({
   BeginDate: Date,
   EndDate: Date,
   Message: String,
-  IsPublic: Bool,
+  IsPublic: String,
   DocumentID: [String],
   PictureID: [String],
   Status: String,

@@ -7,7 +7,7 @@ const listTableSchema = new Schema({
   Value1: String,
   Value2: String,
   Value3: String,
-  Value4: Integer,
+  Value4: String,
   Value5: String,
   Value6: Date,
   Value7: String,

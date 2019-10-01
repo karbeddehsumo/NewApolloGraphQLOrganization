@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const taskactionItemSchema = new Schema({
+const taskSchema = new Schema({
   CommitteeID: String,
   GoalID: String,
   Description: String,

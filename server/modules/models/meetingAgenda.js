@@ -6,7 +6,7 @@ const meetingAgendaSchema = new Schema({
   MeetingID: String,
   Description: String,
   Status: String,
-  TaskID: Integer,
+  TaskID: String,
   EnteredBy: String,
   DateEntered: Date
 });

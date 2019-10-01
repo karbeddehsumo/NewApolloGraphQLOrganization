@@ -11,7 +11,8 @@ const storySchema = new Schema({
   Publish:String,
   DocumentID: [String],
   CreateDate: Date,
-  UpdateDate: Date
+  UpdateDate: Date,
+  CreatedBy: String
 });
 
 module.exports = mongoose.model('story', storySchema);
