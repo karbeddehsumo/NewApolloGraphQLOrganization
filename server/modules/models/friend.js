@@ -10,7 +10,6 @@ const friendSchema = new Schema({
   Suffix: String,
   CategoryID: String,
   ProgramAttendance: [String],
-  EventDate: Date,
   ContactID: String,
   AddressID: String,
   StoryID: String,

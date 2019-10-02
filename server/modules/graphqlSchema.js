@@ -261,7 +261,6 @@ const typeDefs = gql`
         Suffix: String,
         CategoryID: Category,
         ProgramAttendance: [Attendance],
-        EventDate: String,
         ContactID: Contact,
         AddressID: Address,
         StoryID: Story,
@@ -421,9 +420,6 @@ const typeDefs = gql`
           Title: String,
           ContactID: Contact,
           AddressID: Address,
-          PhoneNumber: String,
-          PhoneProviderID: String,
-          Email: String,
           PictureID: [Picture],
           AnnouncementID: Announcement,
           QuestionID: [Question],
@@ -493,9 +489,8 @@ const typeDefs = gql`
         CategoryID: Category,
         Frequency: String,
         Description: String,
-        PhoneNumber: String,
+        ContactID: Contact,
         PayeeTypeID: String,
-        Email: String,
         Status: String,
         EnteredBy: String,
         DateEntered: String
@@ -713,7 +708,7 @@ const typeDefs = gql`
           City: String,
           State: String,
           Zip: String,
-          Country: State!,
+          Country: String!,
         ):Address,
 
         addAnnouncement(
@@ -866,87 +861,424 @@ const typeDefs = gql`
                 DateEntered: String!
               ):Constant,
 
+              addContact(
+                CommitteeID: String!,
+                Cell: String,
+                Email: String,
+                BestContact: String
+              ):Contact,
+
+              addContribution(
+                CommitteeID: String!,
+                CategoryID: String!,
+                PayeeID: String!,
+                Amount: String!,
+                ContributionDate: String!,
+                CheckNumber: String,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Contribution,
+
+              addDocument(
+                committeeID: String!,
+                Title: String!,
+                DocumentTypeID: String!,
+                ContentType: String!,
+                ContentLength: String,
+                SortOrder: String,
+                DateCreated: String!,
+                Author: String,
+                Version: String,
+                FileName: String!,
+                TempFileName: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String!
+              ):Document,
+
+              addExpense(
+                committeeID: String!,
+                CategoryID: String!,
+                BankAccountID: String!,
+                Payee: String!,
+                ExpenseDate: String!,
+                Amount: String!,
+                CheckNumber: String,
+                Reconcile: String,
+                Comment: String,
+                Status: String!,
+                EnteredBy: String!,
+                DateEntered: String
+              ):Expense,
+
+             addFriend(
+               OrganizationID: String!,
+               Title: String!,
+               FirstName: String!,
+               MiddleName: String,
+               LastName: String!,
+               Suffix: String,
+               CategoryID: String!,
+               ProgramAttendance: [String]!,
+               ContactID: String,
+               AddressID: String,
+               StoryID: String,
+               Comment: String,
+               Status: String!,
+               EnteredBy: String!,
+               DateEntered: String!
+            ):Friend,
+
+            addGoal(
+              CommitteeID: String!,
+              Title: String!,
+              Description: String,
+              AssignedTo: String!,
+              BeginDate: String!,
+              EndDate: String!,
+              CompletionRatio: String,
+              SupervisorComment: String,
+              TaskID: [String]!,
+              DocumentID: [String],
+              Status: String!,
+              Comment: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Goal,
+
+            addIncome(
+              CommitteeID: String!,
+              BankAccountID: String!,
+              IncomeDate: String!,
+              CashAmount: String,
+              CategoryID: String!,
+              CheckAmount: String,
+              CoinAmount: String,
+              Comment: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Income,
+
+            addListHeader(
+              CommitteeID: String!,
+              ListTableID: String!,
+              Type1: String!,
+              Type2: String,
+              Type3: String,
+              Type4: String,
+              Type5: String,
+              Type6: String,
+              Type7: String,
+              Type8: String,
+              Type9: String,
+              Type10: String,
+              FileName1: String!,
+              FileName2: String,
+              FileName3: String,
+              FileName4: String,
+              FileName5: String,
+              FileName6: String,
+              FileName7: String,
+              FileName8: String,
+              FileName9: String,
+              FileName10: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):ListHeader,
+
+            addLiteItem(
+              CommitteeID: String!,
+              ListTableID: String!,
+              Value1: String!,
+              Value2: String,
+              Value3: String,
+              Value4: String,
+              Value5: String,
+              Value6: String,
+              Value7: String,
+              Value8: String,
+              Value9: String,
+              Value10: String,
+              EneredBy: String!,
+              DateEntered: String!
+            ):ListItem,
+
+            addListTable(
+              CommitteeID: String!,
+              ListTableID: String!,
+              Value1: String!,
+              Value2: String,
+              Value3: String,
+              Value4: String,
+              Value5: String,
+              Value6: String,
+              Value7: String,
+              Value8: String,
+              Value9: String,
+              Value10: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):ListTable,
+
+            addMeeting(
+              CommitteeID: String!,
+              MeetingDate: String!,
+              Venue: String,
+              StartTime: String,
+              EndTime: String,
+              Title: String!,
+              NextMeetingDate: String,
+              Status: String!,
+              CalendarID: String,
+              DocumentID: [String]!,
+              Host: String,
+              AttendanceID: [String]!,
+              MeetingNoteID: [String],
+              AnnouncementID: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Meeting,
+
+            addMeetingAgenda(
+              CommitteeID: String!,
+              MeetingID: String!,
+              Description: String,
+              Status: String!,
+              TaskID: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):MeetingAgenda,
+
+            addMeetingNote(
+              CommitteeID: String!,
+              MeetingAgendaID: String!,
+              Note: String!,
+              NoteDate: String!,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):MeetingNote,
+
+            addMember(
+              OrganizationID: String!,
+              FirstName: String!,
+              MiddleName: String,
+              LastName: String!,
+              Suffix: String,
+              DOB: String,
+              Gender: String!,
+              MembershipDate: String,
+              Title: String,
+              ContactID: String,
+              AddressID: String,
+              PictureID: [String]!,
+              AnnouncementID: String,
+              QuestionID: [String]!,
+              StoryID: [String]!,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Member,
+
+            addOfficer(
+              CommitteeID: String!,
+              Title: String!,
+              MemberID: String!,
+              DateCreated: String,
+              Description: String,
+              Term: String,
+              QuestionID: [String],
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Officer,
+
+            addOrganization(
+              Name: String!,
+              Address: String,
+              Address2: String,
+              City: String!,
+              State: String,
+              Zip: String,
+              Country: String!,
+              PhoneNumber: String,
+              Email: String!,
+              YearFounded: String!,
+              FriendID: [String]!,
+              ChildrenOrganizationID: [String]!,
+              CommitteeID: [String],
+              PrimaryCommitteeID: String!,
+              StoryID: [String]!,
+              PictureID: [String]!,
+              VideoID: [String]!,
+              Description: String,
+              Vision: String,
+              Mission: String,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!,
+            ): Organization,
+
+            addPayee(
+              CommitteeID: String!,
+              BankAccountID: String!,
+              AccountNumber: String!,
+              PayeeName: String!,
+              URL: String,
+              CategoryID: String!,
+              Frequency: String,
+              Description: String,
+              ContactID: String!,
+              PayeeTypeID: String!,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Payee,
+
+            addPicture(
+              CommitteeID: String!,
+              PictureDate: String,
+              Description: String,
+              ImageData: String!,
+              ImageMimeType: String!,
+              PictureType: String!,
+              GroupID: String,
+              IsPublic: String,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Picture,
+
+            addPost(
+              title: String!,
+              content: String!
+            ): Post,
+
+            addProduct(
+              CommitteeID: String!,
+              Name: String!,
+              Description: String,
+              Price: String,
+              Quantity: String!,
+              CategoryID: String!,
+              PictureID: [String]!,
+              DocumentID: [String]!,
+              StoryID: [String]!,
+              AnnouncementID: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Product,
+
+            addProductDiscount(
+              CommitteeID: String!,
+              Name: String!,
+              Description: String,
+              Price: String!,
+              Quantity: String!,
+              CategoryID: String!,
+              PictureID: [String]!,
+              DocumentID: [String]!,
+              StoryID: [String]!,
+              AnnouncementID: String,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):ProductDiscount,
+
+            addProgramEvent(
+              CommitteeID: String!,
+              GoalID: String,
+              Title: String!,
+              _When: String,
+              _Who: String,
+              _Where: String,
+              _What: String,
+              _How: String,
+              BeginTime: String,
+              EndTime: String,
+              Status: String!,
+              CalendarID: String,
+              DocumentID: String,
+              PictureID: [String]!,
+              AnnouncementID: String,
+              StoryID: [String]!,
+              EventEndDate: String!,
+              ProgramAttendance: [String]!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):ProgramEvent,
+
+            addProperty(
+              OrganizationID: String!,
+              PurchaseDate: String,
+              Value: String,
+              Quantity: String!,
+              Location: String,
+              AssignedTo: String,
+              Condition: String,
+              TagNumber: String,
+              Title: String!,
+              Description: String,
+              Comment: String,
+              PictureID: [String]!,
+              DocumentID: [String]!,
+              Status: String!,
+              EnteredBy: String!,
+              DateEntered: String!
+            ):Property,
+
+            addQuestion(
+              OrganizationID: String!,
+              Question: String!,
+              Category: String!,
+              Required: String,
+              Sequence: String
+            ):Question,
+
+            addRole(
+              role: String!,
+            ):Role,
+
+            addStory(
+              CommitteeID: String!,
+              Title: String!,
+              SubTitle: String,
+              PrimaryName: String,
+              URL: String,
+              ArticleText: String!,
+              Publish:String,
+              DocumentID: [String],
+              CreateDate: String!,
+              UpdateDate: String,
+              CreatedBy: String!
+            ):Story,
+
+            addTask(
+              CommitteeID: String!,
+              GoalID: String,
+              Description: String!,
+              AssignedTo: String,
+              StartDate: String,
+              EndDate: String,
+              ActionItemID: [String]!,
+              Comment: [String]
+            ):Task,
+
+            addUser(
+              OrganizationID: String!,
+              email: String!,
+              password: String!,
+              role: String!
+            ):User,
 
 
-     addFriend(
-      OrganizationID: String!,
-      Title: String,
-      FirstName: String!,
-      LastName: String!,
-      Suffix: String,
-      CategoryID: String,
-      LastEventAttended: String,
-      EventDate: String,
-      PhoneNumber: String,
-      PhoneProviderID: String,
-      Email: String,
-      BestContact: String!,
-      Address: String,
-      Address2: String,
-      City: String,
-      State: String,
-      Zip: String,
-      Comment: String,
-      Status: String!,
-      EnteredBy: String!,
-      DateEntered: String!
-    ):Friend,
-
-    addMember(
-      FamilyID: String!,
-      OrganizationID: String!,
-      FirstName: String!,
-      MiddleName: String,
-      LastName: String!,
-      Suffix: String,
-      DOB: String,
-      Gender: String!,
-      MembershipDate: String,
-      Title: String,
-      ContactTypeID: String,
-      PhoneNumber: String,
-      PhoneProviderID: String,
-      Email: String,
-      PictureID: String,
-      Status: String!,
-      EnteredBy: String!,
-      DateEntered: String!
-    ):Member,
-
-    addOrganization(
-      Name: String!,
-      Address: String,
-      Address2: String,
-      City: String!,
-      State: String,
-      Zip: String,
-      Country: String!,
-      PhoneNumber: String!,
-      Email: String!,
-      YearFounded: String!,
-      StoryID: String,
-      PictureID: String,
-      VideoID: String,
-      Description: String!,
-      Vision: String,
-      Mission: String,
-      Status: String!,
-      EnteredBy: String!,
-      DateEntered: String!,
-      ParentID: String
-    ): Organization,
-
-    addPost(
-      title: String!,
-      content: String!
-    ): Post,
-
-    addUser(
-      email: String!,
-      password: String!
-    ):User,
-  },
-
+          addVideo(
+            CommitteeID: String!,
+            Title: String!,
+            URL: String!,
+            CreateDate: String!,
+            CreatedBy: String!
+          ):Video,
+     },
 `;
 
 module.exports = typeDefs;

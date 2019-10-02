@@ -10,9 +10,8 @@ const payeeSchema = new Schema({
   CategoryID: String,
   Frequency: String,
   Description: Date,
-  PhoneNumber: String,
+  ContactID: String,
   PayeeTypeID: String,
-  Email: String,
   Status: String,
   EnteredBy: String,
   DateEntered: Date
