@@ -16,16 +16,12 @@ const ADD_ORGANIZATION = gql`
     $PhoneNumber: String!,
     $Email: String!,
     $YearFounded: String!,
-    $StoryID: String,
-    $PictureID: String,
-    $VideoID: String,
     $Description: String!,
     $Vision: String,
     $Mission: String,
     $Status: String!,
     $EnteredBy: String!,
-    $DateEntered: String!,
-    $ParentID: String
+    $DateEntered: String!
   ) {
     addOrganization(
       Name: $Name,
@@ -38,16 +34,12 @@ const ADD_ORGANIZATION = gql`
       PhoneNumber: $PhoneNumber,
       Email: $Email,
       YearFounded: $YearFounded,
-      StoryID: $StoryID,
-      PictureID: $PictureID,
-      VideoID: $VideoID,
       Description: $Description,
       Vision: $Vision,
       Mission: $Mission,
       Status: $Status,
       EnteredBy: $EnteredBy,
-      DateEntered: $DateEntered,
-      ParentID: $ParentID
+      DateEntered: $DateEntered
     ) {
       Name
       Description
@@ -76,16 +68,14 @@ const withAddOrganization = Component => props => {
              PhoneNumber,
              Email,
              YearFounded,
-             StoryID,
-             PictureID,
-             VideoID,
+
+
              Description,
              Vision,
              Mission,
              Status,
              EnteredBy,
-             DateEntered,
-             ParentID
+             DateEntered
            }) => addOrganization({
             variables: {
               Name,
@@ -98,16 +88,13 @@ const withAddOrganization = Component => props => {
               PhoneNumber,
               Email,
               YearFounded,
-              StoryID,
-              PictureID,
-              VideoID,
+
               Description,
               Vision,
               Mission,
               Status,
               EnteredBy,
-              DateEntered,
-              ParentID
+              DateEntered
             }, refetchQueries: [
               { query: GET_ORGANIZATIONS }
             ] })}

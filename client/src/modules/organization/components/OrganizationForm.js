@@ -12,7 +12,6 @@ export default class OrganizationForm extends Component {
 
   submitForm(event) {
     event.preventDefault();
-
     this.props.addOrganization({
 
       Name: event.target.Name.value,
@@ -25,16 +24,13 @@ export default class OrganizationForm extends Component {
       PhoneNumber: event.target.PhoneNumber.value,
       Email: event.target.Email.value,
       YearFounded: event.target.YearFounded.value,
-      StoryID: event.target.StoryID.value,
-      PictureID: event.target.PictureID.value,
-      VideoID: event.target.VideoID.value,
       Description: event.target.Description.value,
       Vision: event.target.Vision.value,
       Mission: event.target.Mission.value,
       Status: event.target.Status.value,
       EnteredBy: event.target.EnteredBy.value,
       DateEntered: event.target.DateEntered.value,
-      ParentID: event.target.ParentID.value,
+
     });
   }
 
@@ -45,86 +41,70 @@ export default class OrganizationForm extends Component {
         <Form onSubmit={(event) => this.submitForm(event)}>
           <FormGroup>
             <Label for="Name">Name</Label>
-            <Input type="text" Name="title" id="Name" placeholder="Name" />
+            <Input type="text" name="title" id="Name" placeholder="Name" />
           </FormGroup>
           <FormGroup>
             <Label for="Address">Address</Label>
-            <Input type="textarea" name="Address" id="Address" placeholder="Address" />
+            <Input type="text" name="Address" id="Address" placeholder="Address" />
           </FormGroup>
 
           <FormGroup>
             <Label for="Address2">Address2</Label>
-            <Input type="text" Name="Address2" id="Address2" placeholder="Address2" />
+            <Input type="text" name="Address2" id="Address2" placeholder="Address2" />
           </FormGroup>
           <FormGroup>
             <Label for="City">City</Label>
-            <Input type="text" Name="City" id="City" placeholder="City" />
+            <Input type="text" name="City" id="City" placeholder="City" />
           </FormGroup>
           <FormGroup>
             <Label for="State">State</Label>
-            <Input type="text" Name="State" id="State" placeholder="State" />
+            <Input type="text" name="State" id="State" placeholder="State" />
           </FormGroup>
           <FormGroup>
             <Label for="Zip">Zip</Label>
-            <Input type="text" Name="Zip" id="Zip" placeholder="Zip" />
+            <Input type="text" name="Zip" id="Zip" placeholder="Zip" />
           </FormGroup>
           <FormGroup>
             <Label for="Country">Country</Label>
-            <Input type="text" Name="Country" id="Country" placeholder="Country" />
+            <Input type="text" name="Country" id="Country" placeholder="Country" />
           </FormGroup>
           <FormGroup>
             <Label for="PhoneNumber">Phone Number</Label>
-            <Input type="text" Name="PhoneNumber" id="PhoneNumber" placeholder="Phone Number" />
+            <Input type="text" name="PhoneNumber" id="PhoneNumber" placeholder="Phone Number" />
           </FormGroup>
           <FormGroup>
             <Label for="Email">Email</Label>
-            <Input type="text" Name="Email" id="Email" placeholder="Email" />
+            <Input type="text" name="Email" id="Email" placeholder="Email" />
           </FormGroup>
           <FormGroup>
             <Label for="YearFounded">Year Founded</Label>
-            <Input type="text" Name="YearFounded" id="YearFounded" placeholder="Year Founded" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="StoryID">StoryID</Label>
-            <Input type="text" Name="StoryID" id="StoryID" placeholder="StoryID" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="PictureID">PictureID</Label>
-            <Input type="text" Name="PictureID" id="PictureID" placeholder="PictureID" />
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="VideoID">VideoID</Label>
-            <Input type="textarea" name="VideoID" id="VideoID" placeholder="VideoID" />
+            <Input type="text" name="YearFounded" id="YearFounded" placeholder="Year Founded" />
           </FormGroup>
           <FormGroup>
             <Label for="Description">Description</Label>
-            <Input type="textarea" name="Description" id="Description" placeholder="Description" />
+            <Input type="text" name="Description" id="Description" placeholder="Description" />
           </FormGroup>
           <FormGroup>
             <Label for="Vision">Vision</Label>
-            <Input type="textarea" name="Vision" id="Vision" placeholder="Vision" />
+            <Input type="text" name="Vision" id="Vision" placeholder="Vision" />
           </FormGroup>
           <FormGroup>
             <Label for="Mission">Mission</Label>
-            <Input type="textarea" name="Mission" id="Mission" placeholder="Mission" />
+            <Input type="text" name="Mission" id="Mission" placeholder="Mission" />
           </FormGroup>
           <FormGroup>
             <Label for="Status">Status</Label>
-            <Input type="textarea" name="Status" id="Status" placeholder="Status" />
+            <Input type="text" name="Status" id="Status" placeholder="Status" />
           </FormGroup>
           <FormGroup>
-            <Label for="EnteredBy">Address</Label>
-            <Input type="textarea" name="EnteredBy" id="EnteredBy" placeholder="EnteredBy" />
+            <Label for="EnteredBy">Entered By</Label>
+            <Input type="text" name="EnteredBy" id="EnteredBy" placeholder="EnteredBy" />
           </FormGroup>
           <FormGroup>
-            <Label for="DateEntered">Address</Label>
-            <Input type="textarea" name="DateEntered" id="DateEntered" placeholder="DateEntered" />
+            <Label for="DateEntered">Date Entered</Label>
+            <Input type="text" name="DateEntered" id="DateEntered" placeholder="DateEntered" />
           </FormGroup>
-          <FormGroup>
-            <Label for="ParentID">Address</Label>
-            <Input type="textarea" name="ParentID" id="ParentID" placeholder="ParentID" />
-          </FormGroup>
+
 
           <Button className="submit-button">Submit new organization</Button>
         </Form>

@@ -16,16 +16,13 @@ export const GET_ORGANIZATIONS = gql`
       PhoneNumber
       Email
       YearFounded
-      StoryID
-      PictureID
-      VideoID
+
       Description
       Vision
       Mission
       Status
       EnteredBy
       DateEntered
-      ParentID
     }
   }
 `;

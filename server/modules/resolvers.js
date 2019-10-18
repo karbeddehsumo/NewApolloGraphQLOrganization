@@ -153,16 +153,12 @@ const resolvers = {
         PhoneNumber: organization.PhoneNumber,
         Email: organization.Email,
         YearFounded: organization.YearFounded,
-        StoryID: organization.StoryID,
-        PictureID: organization.PictureID,
-        VideoID: organization.VideoID,
         Description: organization.Description,
         Vision: organization.Vision,
         Mission: organization.Mission,
         Status: organization.Status,
         EnteredBy: organization.EnteredBy,
-        DateEntered: organization.DateEntered,
-        ParentID: organization.ParentID
+        DateEntered: organization.DateEntered
       });
       return newOrganization.save();
     },

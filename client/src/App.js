@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={apolloClient}>
-        <Posts />
         <Organizations />
       </ApolloProvider>
     )

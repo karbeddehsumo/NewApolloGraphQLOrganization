@@ -15,10 +15,10 @@ export default class OrganizationList extends Component {
       return organizations.map(organization => {
         return (
           <Card key={organization._id} body outline className="organization-card">
-            <CardTitle>{organization.Name}</CardTitle>
-            <CardBody>{organization.Description}</CardBody>
-            <CardBody>{organization.YearFounded}</CardBody>
-            <CardBody>{organization.City}, {organization.Country}</CardBody>
+            <CardTitle>Name: {organization.Name}</CardTitle>
+            <CardBody>Description: {organization.Description}</CardBody>
+            <CardBody>Founded: {organization.YearFounded}</CardBody>
+            <CardBody>Location: {organization.City}, {organization.Country}</CardBody>
           </Card>
         );
       });
