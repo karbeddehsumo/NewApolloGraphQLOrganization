@@ -1154,6 +1154,15 @@ const typeDefs = gql`
               content: String!
             ): Post,
 
+            updatePost(
+              id: ID,
+              title: String!,
+              content: String!
+            ): Post,
+
+
+
+
             addProduct(
               CommitteeID: String!,
               Name: String!,

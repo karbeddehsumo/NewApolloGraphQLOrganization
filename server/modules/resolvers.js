@@ -168,6 +168,17 @@ const resolvers = {
       // Save new post and return it
       return newPost.save();
     },
+
+    updatePost: (parent, post) => {
+      return posts.findByIdAndUpdate(
+        post.id,
+        { $set: { title: post.title, content: post.content} },
+        { new: true }
+      )
+      .catch( err => Error(err));
+      
+    },
+
     addUser: (parent, user) => {
       const newUser = new User({
         email: user.email,
