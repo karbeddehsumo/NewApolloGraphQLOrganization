@@ -1154,7 +1154,7 @@ const typeDefs = gql`
               content: String!
             ): Post,
 
-            updatePost(
+            editPost(
               id: ID,
               title: String!,
               content: String!

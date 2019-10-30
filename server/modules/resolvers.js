@@ -169,7 +169,7 @@ const resolvers = {
       return newPost.save();
     },
 
-    updatePost: (parent, post) => {
+    editPost: (parent, post) => {
       return posts.findByIdAndUpdate(
         post.id,
         { $set: { title: post.title, content: post.content} },
